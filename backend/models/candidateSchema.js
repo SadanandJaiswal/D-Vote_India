@@ -13,10 +13,6 @@ const candidateSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  agenda: {
-    type: String,
-    required: true,
-  },
   photoUrl: {
     type: String,
     required: true,

@@ -25,14 +25,29 @@ const electionSchema = new mongoose.Schema({
     required: true,
   },
   blockchainElectionId: {
-    type: Number,
+    type: String,
     required: true,
+  },
+  year:{
+    type: Number,
+    required: true
   },
   status: {
     type: String,
     enum: ['upcoming', 'ongoing', 'completed'],
     default: 'upcoming'
-  }
+  },
+  candidates: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Candidate'
+    }
+  ],
+  hasVoted: [
+    {
+      type: String
+    }
+  ]
 }, { timestamps: true });
 
 module.exports = mongoose.model('Election', electionSchema);

@@ -4,14 +4,14 @@ const Candidate = require('../models/candidateSchema');
 // POST /api/candidates/register
 exports.registerCandidate = async (req, res) => {
     try {
-        const { candidateId, name, party, agenda, photoUrl, electionId } = req.body;
+        const { candidateId, name, party, photoUrl, electionId } = req.body;
 
         // Check if Candidate is already linked
         const existing = await Candidate.findOne({ candidateId });
         if (existing)
             return res.status(400).json({ message: "Candidate already linked" });
 
-        const newCandidate = new Candidate({ candidateId, name, party, agenda, photoUrl, electionId });
+        const newCandidate = new Candidate({ candidateId, name, party, photoUrl, electionId });
         await newCandidate.save();
 
         res.status(201).json({ message: "Candidate registered successfully" });

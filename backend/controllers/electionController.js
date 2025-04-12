@@ -3,14 +3,14 @@ const Election = require('../models/electionSchema');
 // POST /api/elections/create
 exports.createElection = async (req, res) => {
     try {
-        const { name, electionType,  state, startTime, endTime, blockchainElectionId} = req.body;
+        const { name, electionType,  state, startTime, endTime, blockchainElectionId, year} = req.body;
 
         // Check if wallet is already linked
         const existing = await Election.findOne({ blockchainElectionId });
         if (existing)
             return res.status(400).json({ message: "Election Already There" });
 
-        const newElection = new Election({ name, electionType,  state, startTime, endTime, blockchainElectionId });
+        const newElection = new Election({ name, electionType,  state, startTime, endTime, blockchainElectionId, year });
         await newElection.save();
 
         res.status(201).json({ message: "Election Created successfully" });
