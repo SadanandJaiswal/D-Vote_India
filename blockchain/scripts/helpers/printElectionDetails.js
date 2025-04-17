@@ -7,6 +7,7 @@ const printElectionDetails = (elections) => {
     elections.forEach((election, index) => {
         console.log(`\nElection #${index + 1}`);
         console.log(`Name       : ${election.name}`);
+        console.log(`ElectionId : ${election.electionId}`);
         console.log(`State      : ${election.state}`);
         console.log(`Start Time : ${new Date(Number(election.startTime) * 1000).toLocaleString()}`);
         console.log(`End Time   : ${new Date(Number(election.endTime) * 1000).toLocaleString()}`);

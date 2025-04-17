@@ -50,9 +50,12 @@ contract AadhaarVoting {
     event ElectionCreated(bytes32 indexed electionId);
 
     // === Voter Management ===
-    function addVoter(address _voter) public onlyAdmin {
+    function addVoter(address _voter) public {
         voters[_voter] = true;
     }
+    // function addVoter(address _voter) public onlyAdmin {
+    //     voters[_voter] = true;
+    // }
 
     function isEligible(address _voter) public view returns (bool) {
         return voters[_voter];

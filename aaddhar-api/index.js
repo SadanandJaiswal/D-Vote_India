@@ -5,6 +5,8 @@ const fs = require("fs");
 const path = require("path");
 const connectDatabase = require("./config/connection")
 const PORT = 8000;
+const cors = require('cors');
+
 
 const app = express();
 
@@ -16,6 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined", { stream: accessLogStream }));
+app.use(cors()); // Allow all origins (you can customize this for security)
 
 const aadhaarRoutes = require("./routes/aadhaarRoutes");
 app.use("/api/aadhaar", aadhaarRoutes);

@@ -17,3 +17,6 @@ yarn-error.log*
 # Ignore compiled smart contract artifacts (if any)
 blockchain/artifacts/
 blockchain/cache/
+
+
+frontend2

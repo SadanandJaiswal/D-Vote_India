@@ -3,13 +3,13 @@ const getAadhaarVotingContract = require("./helpers/getContract");
 async function main() {
     const AadhaarVotingContract = await getAadhaarVotingContract();
 
-    const electionId = "0x6faa2edb63875d29558d8a108e903b269a7f211ab751f080d9c2b1f5bb68d7b1";
+    const electionId = "0xa1a30849790226944ef15d81cb5ffb84e78cc5d82e686436b7863ec38faee088";
 
-    const [candidates, voteCounts] = await AadhaarVotingContract.getAllVotes(electionId);
+    const [candidatesArray, voteCountsArray] = await AadhaarVotingContract.getAllVotes(electionId);
 
     console.log(`\n📊 Votes for Election ID: ${electionId}`);
-    candidates.forEach((candidate, idx) => {
-        console.log(`Candidate: ${candidate}, Votes: ${voteCounts[idx].toString()}`);
+    candidatesArray.forEach((candidate, idx) => {
+        console.log(`Candidate: ${candidate}, Votes: ${voteCountsArray[idx].toString()}`);
     });
 }
 

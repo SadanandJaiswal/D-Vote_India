@@ -30,6 +30,7 @@ const userSchema = new mongoose.Schema({
 userSchema.pre('save', async function (next) {
   if (!this.isModified('aadhar')) return next();
   const salt = await bcrypt.genSalt(10);
+  console.log("aadhar : ", this.aadhar);
   this.aadhar = await bcrypt.hash(this.aadhar, salt);
   next();
 });
