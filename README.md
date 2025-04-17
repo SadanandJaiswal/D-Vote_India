@@ -89,7 +89,7 @@ In a separate terminal (while the Hardhat node is running):
 
 ```bash
 cd blockchain
-npx hardhat run scripts/deploy.js --network localhost
+npx hardhat deploy --network localhost
 ```
 
 #### 🖥️ Terminal 5 – Start the Frontend App
@@ -99,11 +99,37 @@ cd frontend
 npm run dev
 ```
 
-## 🦊 MetaMask Setup
+### 🦊 **MetaMask Setup**
+---
+1. Open **MetaMask** and connect to:  
+   `http://localhost:8545`
+2. Import accounts using private keys provided by **Hardhat** (from **Terminal 3**).
+3. Update the **contract address** in:  
+   `/frontend/src/context/BlockchainContext.jsx`  
+   → Set the `**contractAddress**` variable to the deployed address from **Terminal 4**.
 
-- Connect MetaMask to `http://localhost:8545`
-- Import accounts using the private keys from Hardhat (shown in Terminal 3)
-- Ensure the correct contract address is used in frontend config
+
+### 📝 **User Flow: Registration & Voting**
+---
+After running all the servers and setting the contract address:
+
+#### **1. Register as a Voter**
+- Connect your **MetaMask** wallet.
+- Enter your **Aadhaar number**.
+- An **OTP** will be sent (via the simulated `aadhaar-api`).
+- Verify the **OTP**.
+- On successful verification, the user is **registered** and eligible to **vote**.
+
+#### **2. Voting Process**
+- Go to the **Election Page**.
+- Select an **election** and cast your **vote**.
+
+#### **3. Admin Access**
+- The **Admin** can:
+  - Create new **elections**.
+  - Manage existing **elections**.
+  - Add or remove **candidates**.
+
 
 
 ## 👨‍💻 Author
